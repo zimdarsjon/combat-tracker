@@ -15,7 +15,7 @@ export const useCombatStore = defineStore('combat', () => {
 
     const addNewEnemy = () => {
         enemies.value.push({
-            icon: './public/skull.png',
+            icon: './skull.png',
             id: nextID.value
         } as CombatTrack);
         nextID.value++;
