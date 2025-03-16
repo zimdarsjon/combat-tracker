@@ -7,37 +7,37 @@ export function generatePlayers() {
             id: 1,
             name: 'Kroktos',
             player: true,
-            icon: './src/assets/icons/leonin.jpg'
+            icon: './leonin.jpg'
         },
         {
             id: 2,
             name: 'Kharmir',
             player: true,
-            icon: './src/assets/icons/dwarf.jpg'
+            icon: './dwarf.jpg'
         },
         {
             id: 3,
             name: 'Sam',
             player: true,
-            icon: './src/assets/icons/bard.jpg'
+            icon: './bard.jpg'
         },
         {
             id: 4,
             name: 'Tinnim',
             player: true,
-            icon: './src/assets/icons/tortle.jpg'
+            icon: './tortle.jpg'
         },
         {
             id: 5,
             name: 'Dannish',
             player: true,
-            icon: './src/assets/icons/kalashtar.jpg'
+            icon: './kalashtar.jpg'
         },
         {
             id: 6,
             name: 'Mira',
             player: true,
-            icon: './src/assets/icons/firbolg.jpg'
+            icon: './firbolg.jpg'
         }
     ] as CombatTrack[];
 
