@@ -69,10 +69,18 @@ const selectIcon = () => {
 
 // ADD HOVER ON INIATIVE TO CHECK RESULTS
 
+const log = (e) => {
+    console.log(e)
+    window.alert(JSON.stringify(e))
+}
+
+const testNumber = ref<number>(0);
+
 </script>
 <template>
     <Card
         @contextmenu="e => emit('rightClick', e, combatant.id ?? 0)"
+        @click="e => log(e)"
         :pt="{
             root: {
                 style: {
@@ -95,6 +103,8 @@ const selectIcon = () => {
             </div>
         </template>
         <template #content @contextmenu="onImageRightClick">
+
+            <InputNumber placeholder="0" id="test" v-model="testNumber" aria-describedby="test" />
 
             <div class="flex gap-2 align-items-center justify-content-between mb-2" v-if="!activeCombat && !combatant.player">
                 <label for="combatant-count">Count:</label>
