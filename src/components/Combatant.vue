@@ -71,7 +71,8 @@ const selectIcon = () => {
 
 const log = (e: any) => {
     console.log(e)
-    testString.value = JSON.stringify(e);
+    console.log(e.pointerType, e.pointerType, e.persistentDeviceId)
+    testString.value = `${e.pointerType} - ${e.pointerId} - ${e.persistentDeviceId}`;
 }
 
 const testNumber = ref<number>(0);
@@ -105,22 +106,24 @@ const testString = ref<string>('');
         </template>
         <template #content @contextmenu="onImageRightClick">
 
-            <input v-model="testNumber" type="number" />
             <span>{{ testString }}</span>
 
             <div class="flex gap-2 align-items-center justify-content-between mb-2" v-if="!activeCombat && !combatant.player">
                 <label for="combatant-count">Count:</label>
-                <InputNumber placeholder="1" id="combatant-count" v-model="props.combatant.count" aria-describedby="combatant-count" />
+                <!-- <InputNumber placeholder="1" id="combatant-count" v-model="props.combatant.count" aria-describedby="combatant-count" /> -->
+                <input placeholder="1" id="combatant-count" v-model="props.combatant.count" aria-describedby="combatant-count" type="number" class="p-inputtext p-inputnumber-input"/>
             </div>
 
             <div class="flex gap-2 align-items-center justify-content-between mb-2" v-if="!activeCombat && !combatant.player">
                 <label for="combatant-modifier">Modifier:</label>
-                <InputNumber placeholder="0" id="combatant-count" v-model="props.combatant.modifier" aria-describedby="combatant-modifier" />
+                <!-- <InputNumber placeholder="0" id="combatant-count" v-model="props.combatant.modifier" aria-describedby="combatant-modifier" /> -->
+                <input placeholder="0" id="combatant-count" v-model="props.combatant.modifier" aria-describedby="combatant-modifier" type="number" class="p-inputtext p-inputnumber-input"/>
             </div>
 
             <div class="flex gap-2 align-items-center justify-content-between" v-if="(!activeCombat && combatant.player) || (combatant.editing && activeCombat)">
                 <label for="initiative">Initiative:</label>
-                <InputNumber placeholder="0" id="initiative" v-model="props.combatant.iniative" aria-describedby="initiative" />
+                <!-- <InputNumber placeholder="0" id="initiative" v-model="props.combatant.iniative" aria-describedby="initiative" /> -->
+                <input placeholder="0" id="initiative" v-model="props.combatant.iniative" aria-describedby="initiative" type="number" class="p-inputtext p-inputnumber-input"/>
             </div>
 
             <div class="flex gap-2 align-items-center" v-if="activeCombat && !combatant.editing">
@@ -151,3 +154,15 @@ const testString = ref<string>('');
         </template>
     </Card>
 </template>
+<style scoped>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
