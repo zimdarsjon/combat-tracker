@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
-import InputNumber from 'primevue/inputnumber';
 import IconModal from '../components/modals/IconModal.vue';
 import Image from 'primevue/image';
 import Button from 'primevue/button';
@@ -75,7 +74,6 @@ const log = (e: any) => {
     testString.value = `${e.pointerType} - ${e.pointerId} - ${e.persistentDeviceId}`;
 }
 
-const testNumber = ref<number>(0);
 const testString = ref<string>('');
 
 </script>
