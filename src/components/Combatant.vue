@@ -71,10 +71,11 @@ const selectIcon = () => {
 
 const log = (e: any) => {
     console.log(e)
-    window.alert(JSON.stringify(e))
+    testString.value = JSON.stringify(e);
 }
 
 const testNumber = ref<number>(0);
+const testString = ref<string>('');
 
 </script>
 <template>
@@ -104,7 +105,8 @@ const testNumber = ref<number>(0);
         </template>
         <template #content @contextmenu="onImageRightClick">
 
-            <InputNumber placeholder="0" id="test" v-model="testNumber" aria-describedby="test" />
+            <input v-model="testNumber" type="number" />
+            <span>{{ testString }}</span>
 
             <div class="flex gap-2 align-items-center justify-content-between mb-2" v-if="!activeCombat && !combatant.player">
                 <label for="combatant-count">Count:</label>
