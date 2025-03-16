@@ -69,7 +69,7 @@ const selectIcon = () => {
 
 // ADD HOVER ON INIATIVE TO CHECK RESULTS
 
-const log = (e) => {
+const log = (e: any) => {
     console.log(e)
     window.alert(JSON.stringify(e))
 }
