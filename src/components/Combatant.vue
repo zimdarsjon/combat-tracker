@@ -69,20 +69,11 @@ const selectIcon = () => {
 
 // ADD HOVER ON INIATIVE TO CHECK RESULTS
 
-const handleTVClick= (e: any) => {
-    console.log(e)
-    if (e.pointerType !== 'mouse') {
-        emit('rightClick', e, props.combatant.id ?? 0)
-    }
-}
-
-const testString = ref<string>('');
 
 </script>
 <template>
     <Card
         @contextmenu="e => emit('rightClick', e, combatant.id ?? 0)"
-        @click="e => handleTVClick(e)"
         :pt="{
             root: {
                 style: {
@@ -106,25 +97,19 @@ const testString = ref<string>('');
         </template>
         <template #content>
 
-            <span>{{ testString }}</span>
-            <InputNumber v-if="false" />
-
             <div class="flex gap-2 align-items-center justify-content-between mb-2" v-if="!activeCombat && !combatant.player">
                 <label for="combatant-count">Count:</label>
-                <!-- <InputNumber placeholder="1" id="combatant-count" v-model="props.combatant.count" aria-describedby="combatant-count" /> -->
-                <input placeholder="1" id="combatant-count" v-model="props.combatant.count" aria-describedby="combatant-count" type="number" class="p-inputtext p-inputnumber-input"/>
+                <InputNumber placeholder="1" id="combatant-count" v-model="props.combatant.count" aria-describedby="combatant-count" />
             </div>
 
             <div class="flex gap-2 align-items-center justify-content-between mb-2" v-if="!activeCombat && !combatant.player">
                 <label for="combatant-modifier">Modifier:</label>
-                <!-- <InputNumber placeholder="0" id="combatant-count" v-model="props.combatant.modifier" aria-describedby="combatant-modifier" /> -->
-                <input placeholder="0" id="combatant-count" v-model="props.combatant.modifier" aria-describedby="combatant-modifier" type="number" class="p-inputtext p-inputnumber-input"/>
+                <InputNumber placeholder="0" id="combatant-count" v-model="props.combatant.modifier" aria-describedby="combatant-modifier" />
             </div>
 
             <div class="flex gap-2 align-items-center justify-content-between" v-if="(!activeCombat && combatant.player) || (combatant.editing && activeCombat)">
                 <label for="initiative">Initiative:</label>
-                <!-- <InputNumber placeholder="0" id="initiative" v-model="props.combatant.iniative" aria-describedby="initiative" /> -->
-                <input placeholder="0" id="initiative" v-model="props.combatant.iniative" aria-describedby="initiative" type="number" class="p-inputtext p-inputnumber-input"/>
+                <InputNumber placeholder="0" id="initiative" v-model="props.combatant.iniative" aria-describedby="initiative" />
             </div>
 
             <div class="flex gap-2 align-items-center" v-if="activeCombat && !combatant.editing">
@@ -134,7 +119,7 @@ const testString = ref<string>('');
 
             <div class="card flex flex-wrap justify-center gap-4" v-if="!activeCombat  && !combatant.player">
                 <div class="flex items-center gap-2">
-                    <Checkbox v-model="advantage" binary inputId="advantage" name="advantage" :value="true"  />
+                    <Checkbox v-model="advantage" binary inputId="advantage" name="advantage" :value="true"/>
                     <label for="advantage"> Advantage </label>
                 </div>
                 <div class="flex items-center gap-2">
@@ -148,22 +133,10 @@ const testString = ref<string>('');
                 <label for="hidden"> Hidden </label>
             </div>
 
-            <Button v-if="activeCombat && combatant.editing" @click="combatant.editing = false" severity="success" class="ml-2 border-round">
+            <Button v-if="activeCombat && combatant.editing" @click="combatant.editing = false;" severity="success" class="ml-2 border-round" >
                 <i class="pi pi-check"></i>
             </Button>
             
         </template>
     </Card>
 </template>
-<style scoped>
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-</style>
