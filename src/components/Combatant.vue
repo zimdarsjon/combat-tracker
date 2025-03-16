@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
+import InputNumber from 'primevue/inputnumber';
 import IconModal from '../components/modals/IconModal.vue';
 import Image from 'primevue/image';
 import Button from 'primevue/button';
@@ -68,10 +69,11 @@ const selectIcon = () => {
 
 // ADD HOVER ON INIATIVE TO CHECK RESULTS
 
-const log = (e: any) => {
+const handleTVClick= (e: any) => {
     console.log(e)
-    console.log(e.pointerType, e.pointerType, e.persistentDeviceId)
-    testString.value = `${e.pointerType} - ${e.pointerId} - ${e.persistentDeviceId}`;
+    if (e.pointerType !== 'mouse') {
+        emit('rightClick', e, props.combatant.id ?? 0)
+    }
 }
 
 const testString = ref<string>('');
@@ -80,7 +82,7 @@ const testString = ref<string>('');
 <template>
     <Card
         @contextmenu="e => emit('rightClick', e, combatant.id ?? 0)"
-        @click="e => log(e)"
+        @click="e => handleTVClick(e)"
         :pt="{
             root: {
                 style: {
@@ -102,9 +104,10 @@ const testString = ref<string>('');
                 <span v-else>{{ combatant.name ?? '' }}</span>
             </div>
         </template>
-        <template #content @contextmenu="onImageRightClick">
+        <template #content>
 
             <span>{{ testString }}</span>
+            <InputNumber v-if="false" />
 
             <div class="flex gap-2 align-items-center justify-content-between mb-2" v-if="!activeCombat && !combatant.player">
                 <label for="combatant-count">Count:</label>
